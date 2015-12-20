@@ -4,16 +4,16 @@
 # Website: http://gameservermanagers.com
 lgsm_version="201215"
 
-if [ -z "${autoinstall}" ]; then
-	echo ""
-	echo "Server Directory"
-	echo "================================="
-	echo ""
-	pwd
-	echo ""
-	if [ -d "${filesdir}" ]; then
-		fn_printwarningnl "A server is already installed here."
-	fi
+echo ""
+echo "Server Directory"
+echo "================================="
+echo ""
+pwd
+echo ""
+if [ -d "${filesdir}" ]; then
+	fn_printwarningnl "A server is already installed here."
+fi
+if [ -z "${autoinstall}" ]; then	
 	while true; do
 		read -p "Continue [y/N]" yn
 		case $yn in
@@ -22,7 +22,6 @@ if [ -z "${autoinstall}" ]; then
 		* ) echo "Please answer yes or no.";;
 		esac
 	done
-	fn_install_header
 fi
-
 mkdir -pv "${filesdir}"
+echo ""

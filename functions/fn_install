@@ -7,7 +7,6 @@ lgsm_version="201215"
 fn_check_root
 fn_install_header
 fn_install_serverdir
-fn_install_header
 
 # Download and install
 if [ "${gamename}" == "Unreal Tournament 2004" ]; then
