@@ -2,22 +2,27 @@
 # LGSM fn_install_serverdir function
 # Author: Daniel Gibbs
 # Website: http://gameservermanagers.com
-lgsm_version="061115"
+lgsm_version="201215"
 
-echo ""
-echo "Server Directory"
-echo "================================="
-echo ""
-pwd
-echo ""
-if [ -d "${filesdir}" ]; then
-	fn_printwarningnl "A server is already installed here."
+if [ -z "${autoinstall}" ]; then
+	echo ""
+	echo "Server Directory"
+	echo "================================="
+	echo ""
+	pwd
+	echo ""
+	if [ -d "${filesdir}" ]; then
+		fn_printwarningnl "A server is already installed here."
+	fi
+	while true; do
+		read -p "Continue [y/N]" yn
+		case $yn in
+		[Yy]* ) break;;
+		[Nn]* ) exit;;
+		* ) echo "Please answer yes or no.";;
+		esac
+	done
+	fn_install_header
 fi
-while true; do
-	read -p "Continue [y/N]" yn
-	case $yn in
-	[Yy]* ) break;;
-	[Nn]* ) exit;;
-	* ) echo "Please answer yes or no.";;
-	esac
-done
+
+mkdir -pv "${filesdir}"
