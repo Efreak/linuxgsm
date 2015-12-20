@@ -49,7 +49,9 @@ echo -en "starting backup...\r"
 sleep 1
 echo -en "\n"
 cd "${rootdir}"
-mkdir -pv "${backupdir}" > /dev/null 2>&1
+if [ ! -d "${backupdir}" ]; then
+	mkdir -pv "${backupdir}"
+fi
 tar -cvzf "${backupdir}/${backupname}.tar.gz" --exclude "${backupdir}" ./*
 echo ""
 echo "Backup created: ${backupdir}/${backupname}.tar.gz"

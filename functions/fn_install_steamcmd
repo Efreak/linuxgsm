@@ -10,7 +10,7 @@ echo ""
 echo "Installing SteamCMD"
 echo "================================="
 cd "${rootdir}"
-mkdir -pv "steamcmd"
+mkdir -pv "${rootdir}/steamcmd"
 sleep 1
 cd "steamcmd"
 if [ ! -f steamcmd.sh ]; then
