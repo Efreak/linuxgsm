@@ -8,6 +8,7 @@ lgsm_version="271215"
 
 local modulename="Update"
 function_selfname="$(basename $(readlink -f "${BASH_SOURCE[0]}"))"
+steamcmddir="${rootdir}/steamcmd"
 
 fn_steamcmd_dl(){
 cd "${rootdir}"
@@ -19,9 +20,9 @@ if [ $(command -v unbuffer) ]; then
 fi
 
 if [ "${engine}" == "goldsource" ]; then
-	${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +app_set_config 90 mod ${appidmod} +app_update "${appid}" +quit|tee -a "${scriptlog}"
+	${unbuffer} "${steamcmddir}"/steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +app_set_config 90 mod ${appidmod} +app_update "${appid}" +quit|tee -a "${scriptlog}"
 else
-	${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +app_update "${appid}" +quit|tee -a "${scriptlog}"
+	${unbuffer} "${steamcmddir}"/steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +app_update "${appid}" +quit|tee -a "${scriptlog}"
 fi
 
 fix.sh

@@ -31,7 +31,7 @@ else
 	# Checks if SteamCMD exists when starting or updating a server.
 	# Re-installs if missing.
 	steamcmddir="${rootdir}/steamcmd"
-	if [ ! -f "${steamcmddir}/steamcmd.sh" ]; then
+	if [ ! -f ""${steamcmddir}"/steamcmd.sh" ]; then
 		fn_printwarnnl "SteamCMD is missing"
 		fn_scriptlog "SteamCMD is missing"
 		sleep 1
@@ -51,7 +51,7 @@ else
 		fi
 		tar --verbose -zxf "${steamcmddir}/steamcmd_linux.tar.gz" -C "${steamcmddir}"
 		rm -v "${steamcmddir}/steamcmd_linux.tar.gz"
-		chmod +x "${steamcmddir}/steamcmd.sh"
+		chmod +x ""${steamcmddir}"/steamcmd.sh"
 	fi		
 	if [ "${modulename}" == "Update" ]||[ "${modulename}" == "Validate" ]; then
 		# Checks that steamcmd is working correctly and will prompt Steam Guard if required.

@@ -8,6 +8,7 @@ lgsm_version="271215"
 
 local modulename="Validate"
 function_selfname="$(basename $(readlink -f "${BASH_SOURCE[0]}"))"
+steamcmddir="${rootdir}/steamcmd"
 
 fn_validation(){
 fn_printwarn "Validating may overwrite some customised files."
@@ -29,9 +30,9 @@ if [ $(command -v unbuffer) ]; then
 fi
 
 if [ "${engine}" == "goldsource" ]; then
-	${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +app_set_config 90 mod ${appidmod} +app_update "${appid}" +app_update "${appid}" validate +quit|tee -a "${scriptlog}"
+	${unbuffer} "${steamcmddir}"/steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +app_set_config 90 mod ${appidmod} +app_update "${appid}" +app_update "${appid}" validate +quit|tee -a "${scriptlog}"
 else
-	${unbuffer} ./steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +app_update "${appid}" validate +quit|tee -a "${scriptlog}"
+	${unbuffer} "${steamcmddir}"/steamcmd.sh +login "${steamuser}" "${steampass}" +force_install_dir "${filesdir}" +app_update "${appid}" validate +quit|tee -a "${scriptlog}"
 fi
 
 fix.sh

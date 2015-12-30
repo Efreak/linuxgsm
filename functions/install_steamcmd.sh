@@ -6,12 +6,14 @@ lgsm_version="271215"
 
 # Description: Downloads SteamCMD on install.
 
+steamcmddir="${rootdir}/steamcmd"
+
 echo ""
 echo "Installing SteamCMD"
 echo "================================="
 sleep 1
 steamcmddir="${rootdir}/steamcmd"
-if [ ! -f "${steamcmddir}/steamcmd.sh" ]; then
+if [ ! -f ""${steamcmddir}"/steamcmd.sh" ]; then
 	if [ ! -d "${steamcmddir}" ]; then
 		mkdir -v "${steamcmddir}"
 	fi
@@ -28,7 +30,7 @@ if [ ! -f "${steamcmddir}/steamcmd.sh" ]; then
 	fi
 	tar --verbose -zxf "${steamcmddir}/steamcmd_linux.tar.gz" -C "${steamcmddir}"
 	rm -v "${steamcmddir}/steamcmd_linux.tar.gz"
-	chmod +x "${steamcmddir}/steamcmd.sh"
+	chmod +x ""${steamcmddir}"/steamcmd.sh"
 else
 	echo "SteamCMD already installed!"
 fi
